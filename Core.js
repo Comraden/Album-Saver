@@ -13,7 +13,9 @@ function saverStart(mode)
         case true:
             var saveInterval = setInterval(function()
             {
+                var counter = document.getElementsByClassName("pv_counter");
                 var obj = document.getElementById("pv_photo");
+                console.log("Сохраняю фото" + counter[0].innerHTML);
                 Photoview.savePhoto()
                 cur.pvClicked = true; Photoview.show(false, cur.pvIndex + 1, event);
             },1000)
@@ -21,7 +23,9 @@ function saverStart(mode)
         case false:
             var deleteInterval = setInterval(function()
             {
+                var counter = document.getElementsByClassName("pv_counter");
                 var obj = document.getElementById("pv_photo");
+                console.log("Удаляю фото" + counter[0].innerHTML);
                 Photoview.deletePhoto()
                 cur.pvClicked = true; Photoview.show(false, cur.pvIndex + 1, event);
             },1000)
