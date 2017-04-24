@@ -1,28 +1,25 @@
 //Use savePhoto(true) to save photo in your album
 //Use savePhoto(false) to delete photo in your album
-document.onkeydown = function checkKeycode(event)//Press "S" for savig photo in your album
-{
-    var keycode;
-    if(!event) var event = window.event;
-    if (event.keyCode) keycode = event.keyCode; // IE
-    else if(event.which) keycode = 83; // all browsers
-    Photoview.savePhoto();
-}
+
+var jquery = document.createElement('jquery');
+jquery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';
+document.getElementsByTagName('head')[0].appendChild(jquery);
+console.log('jquery loaded !');
 
 function saverStart(mode)
 {
     switch(mode)
     {
         case true:
-            var x = setInterval(function()
+            var saveInterval = setInterval(function()
             {
-                var obj = $("#pv_photo");
+                var obj = document.getElementById("pv_photo");
                 Photoview.savePhoto()
                 cur.pvClicked = true; Photoview.show(false, cur.pvIndex + 1, event);
             },1000)
             break;
         case false:
-            var x = setInterval(function()
+            var deleteInterval = setInterval(function()
             {
                 var obj = document.getElementById("pv_photo");
                 Photoview.deletePhoto()
@@ -32,4 +29,3 @@ function saverStart(mode)
         default:alert("Unknown mode.Please use 'true'/'false'");
     }
 }
-clearInterval(x);
